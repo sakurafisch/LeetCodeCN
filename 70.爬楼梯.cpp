@@ -1,3 +1,5 @@
+#include <unordered_map>
+using std::unordered_map;
 class Solution {
 public:
     unordered_map<int, int> m;

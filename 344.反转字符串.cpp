@@ -4,6 +4,11 @@
  * [344] 反转字符串
  */
 
+#include <vector>
+#include <algorithm>
+using std::vector;
+using std::swap;
+
 // @lc code=start
 class Solution {
 public:
