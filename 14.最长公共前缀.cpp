@@ -1,35 +1,23 @@
-#include <iostream>
 #include <vector>
 #include <string>
-using namespace std;
+using std::vector;
+using std::string;
+
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        if (strs.empty()) return "";
-        int minSize = 0x3f3f3f3f;
-        for (auto str : strs) {
-            if (str.length() < minSize) {
-                minSize = str.length();
-            }
+        if (strs.size() == 0) {
+            return 0;
         }
-        string sample = strs[0];
-        string common = "";
-        int len = 0;
-        bool flag;
-        for (int j = 0; j < minSize; ++j) {
-            flag = true;
-            for (auto itr = (strs.begin() + 1); itr != strs.end(); ++itr) {
-                if ((*itr)[j] != sample[j]) {
-                    flag = false;
+        string ans = strs[0];
+        for (int i = 0; i < strs.size(); ++i) {
+            for (int j = 0; j < ans.length(); ++j) {
+                if (strs[i][j] != ans[j]) {
+                    ans = ans.substr(0, j);
                     break;
-                } else continue;
+                }
             }
-            if (flag) {
-                ++len;
-            } else break;
         }
-        common = sample.substr(0, len);
-
-        return common;
+        return ans;
     }
 };
