@@ -1,3 +1,6 @@
+#include <vector>
+using std::vector;
+
 class Solution {
 private:
     void dfs(vector<vector<char>>& grid, int r, int c) {
