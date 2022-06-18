@@ -29,6 +29,7 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	}
 	if cnt != 0 {
 		last.Next = s[0]
+		s = nil
 	}
 	return dummy.Next
 }

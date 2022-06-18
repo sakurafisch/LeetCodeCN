@@ -33,6 +33,7 @@ class Solution {
         }
         if (cnt != 0) {
             last.next = arr[0];
+            arr = null;
         }
         return dummy.next;
     }
