@@ -3,8 +3,8 @@ class ListNode {
     val: number
     next: ListNode | null
     constructor(val?: number, next?: ListNode | null) {
-        this.val = (val===undefined ? 0 : val)
-        this.next = (next===undefined ? null : next)
+        this.val = (val === undefined ? 0 : val)
+        this.next = (next === undefined ? null : next)
     }
 }
 
@@ -12,7 +12,7 @@ class ListNode {
 function reverseBetween(head: ListNode | null, left: number, right: number): ListNode | null {
     const dummy = new ListNode(0, head)
     let pre = dummy
-    for (let i = 0; i < left-1; ++i) {
+    for (let i = 0; i < left - 1; ++i) {
         pre = pre.next
     }
     let curr = pre.next

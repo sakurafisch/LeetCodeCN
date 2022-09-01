@@ -5,9 +5,9 @@
  * };
  */
 
- var solution = function(isBadVersion: any) {
+var solution = function (isBadVersion: any) {
 
-    return function(n: number): number {
+    return function (n: number): number {
         let [left, right] = [0, n];
         while (left <= right) {
             const mid = Math.floor((right - left) / 2 + left);
