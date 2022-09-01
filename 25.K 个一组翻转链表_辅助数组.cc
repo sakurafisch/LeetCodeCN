@@ -11,33 +11,32 @@ struct ListNode {
 };
 
 class Solution {
-    public:
-        ListNode* reverseKGroup(ListNode* head, int k) {
-            ListNode* dummy = new ListNode(0);
-            dummy->next = head;
-            ListNode* last = dummy;
-            vector<ListNode*> v(k);
-            int cnt = 0;
-            ListNode* cur = head;
-            while (cur != nullptr) {
-                v[cnt] = cur;
-                ++cnt;
-                cur = cur->next;
-                if (cnt == k) {
-                    v[0]->next = nullptr;
-                    for (int i = 1; i < k; ++i) {
-                        v[i]->next = v[i-1];
-                    }
-                    last->next = v[k-1];
-                    last = v[0];
-                    v.clear();
-                    cnt = 0;
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* last = dummy;
+        vector<ListNode*> vec(k);
+        int cur = 0;
+        while (head != nullptr) {
+            vec[cur] = head;
+            ++cur;
+            head = head->next;
+            if (cur == k) {
+                vec[0]->next = nullptr;
+                for (int i = 1; i < k; ++i) {
+                    vec[i]->next = vec[i-1];
                 }
+                last->next = vec[k-1];
+                last = vec[0];
+                vec.clear();
+                cur = 0;
             }
-            if (cnt != 0) {
-                last->next = v[0];
-                v.clear();
-            }
-            return dummy->next;
         }
-    };
+        if (cur != 0) {
+            last->next = vec[0];
+            vec.clear();
+        }
+        return dummy->next;
+    }
+};
