@@ -9,10 +9,10 @@ class TreeNode {
     }
 }
 
-let ans: number = -1 << 63
+let ans: number = Number.MIN_SAFE_INTEGER
 
 function maxPathSum(root: TreeNode | null): number {
-    ans = -1 << 63
+    ans = Number.MIN_SAFE_INTEGER
     maxPath(root)
     return ans
 };
