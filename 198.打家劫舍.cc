@@ -1,18 +1,22 @@
-#include <vector>
 #include <algorithm>
-using std::vector;
+#include <vector>
 using std::max;
+using std::vector;
 
 class Solution {
 public:
-    int rob(vector<int>& nums) {
-        int preMax = 0;
-        int curMax = 0;
-        for (int x : nums) {
-            int tmp = curMax;
-            curMax = max(preMax + x, curMax);
-            preMax = tmp;
-        }
-        return curMax;
+    int rob(vector<int> &nums) {
+        if (nums.empty())
+            return 0;
+        if (nums.size() == 1)
+            return nums[0];
+        if (nums.size() == 2)
+            return max(nums[0], nums[1]);
+        vector<int> dp(nums.size(), 0);
+        dp[0] = nums[0];
+        dp[1] = max(nums[0], nums[1]);
+        for (int i = 2; i < nums.size(); ++i)
+            dp[i] = max(nums[i] + dp[i - 2], dp[i - 1]);
+        return dp.back();
     }
 };

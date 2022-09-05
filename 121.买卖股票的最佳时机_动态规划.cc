@@ -8,12 +8,12 @@ using std::min;
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int mi = 0x3f3f3f3f;
-        int ans = 0;
-        for (int x : prices) {
-            ans = max(ans, x - mi);
-            mi = min(mi, x);
+        int minprice = prices[0];
+        int maxprofit = 0;
+        for (int i = 1; i < prices.size(); ++i) {
+            maxprofit = max(maxprofit, prices[i] - minprice);
+            minprice = min(minprice, prices[i]);
         }
-        return ans;
+        return maxprofit;
     }
 };
