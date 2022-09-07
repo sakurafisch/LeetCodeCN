@@ -14,8 +14,8 @@ public:
         auto itr2 = nums2.begin();
         while (itr1 != nums1.end() && itr2 != nums2.end()) {
             *itr1 = *itr2;
-            ++itr2;
             ++itr1;
+            ++itr2;
         }
         sort(nums1.begin(), nums1.end());
         return;

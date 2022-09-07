@@ -11,18 +11,18 @@ struct TreeNode {
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (root == nullptr) 
+        if (!root)
             return nullptr;
         if (root == p || root == q)
             return root;
         auto left = lowestCommonAncestor(root->left, p, q);
         auto right = lowestCommonAncestor(root->right, p, q);
-        if (left == nullptr)
-            return right;
-        if (right == nullptr)
-            return left;
-        if (left != nullptr && right != nullptr)
+        if (left && right)
             return root;
+        if (left)
+            return left;
+        if (right)
+            return right;
         return nullptr;
     }
 };

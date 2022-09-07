@@ -8,7 +8,7 @@ public:
         int max = x;
         int m;
         while (max - min > 1) {
-            m = (max + min) / 2;
+            m = min + (max - min) / 2;
             if (x / m < m) {
                 max = m;
             } else {
