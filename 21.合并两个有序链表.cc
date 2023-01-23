@@ -9,29 +9,20 @@ struct ListNode {
  
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        ListNode* h = new ListNode(0);
-        ListNode* p = h;
-        while (l1 && l2) {
-            if (l1->val < l2->val) {
-                p->next = l1;
-                l1 = l1->next;
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* head = new ListNode(0, nullptr);
+        ListNode* cur = head;
+        while (list1 && list2) {
+            if (list1->val < list2->val) {
+                cur->next = list1;
+                list1 = list1->next;
             } else {
-                p->next = l2;
-                l2 = l2->next;
+                cur->next = list2;
+                list2 = list2->next;
             }
-            p = p->next;
+            cur = cur->next;
         }
-        while (l1) {
-            p->next = l1;
-            l1 = l1->next;
-            p = p->next;
-        }
-        while (l2) {
-            p->next = l2;
-            l2 = l2->next;
-            p = p->next;
-        }
-        return h->next;
+        cur->next = list1 ? list1 : list2;
+        return head->next;
     }
 };
