@@ -11,7 +11,7 @@ class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         auto cmp = [](const ListNode* x, const ListNode* y) -> bool { return x->val > y->val; };
-        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);
+        auto pq = priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)>(cmp);
         for (int i = 0; i < lists.size(); ++i) {
             if (lists[i] != nullptr) {
                 pq.push(lists[i]);
